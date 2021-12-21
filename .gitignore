@@ -30,3 +30,40 @@
 *.exe
 *.out
 *.app
+
+# MAC OS files
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
+
+# VS code files
+.vscode
+**/.vscode
+
+# CLion
+.idea
+CMakelist.txt
+
+# cache
+.cache
+**/.cache
+
+# bear
+compile_commands.json
+**/compile_commands.json
+
+# Miscellaneous
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+# Program name
+minishell
+
+# Test files
+in
+infile
+out
+outfile
