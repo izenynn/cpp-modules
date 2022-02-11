@@ -1,6 +1,6 @@
 ### PROGRAM ###
 
-NAME = "megaphone"
+NAME = megaphone
 
 ### COMPILER ###
 

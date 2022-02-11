@@ -1,35 +1,19 @@
 ### PROGRAM ###
 
-NAME = "megaphone"
+NAME = phonebook
 
 ### COMPILER ###
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror
-
-### PATH ###
-
-SRC_PATH = src
-OBJ_PATH = obj
-INC_PATH = inc
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 ### SOURCES ###
 
-SRC_FILES = megaphone.cpp
+SRC = megaphone.cpp
 
-SRC = $(addprefix $(SRC_PATH)/, $(SRC_FILES))
+OBJ = $(SRC:%.cpp=%.o)
 
-OBJ_FILES = $(SRC_FILES:%.cpp=%.o)
-
-OBJ = $(addprefix $(OBJ_PATH)/, $(OBJ_FILES))
-
-DEP_FILES = $(SRC_FILES:%.cpp=%.d)
-
-DEP = $(addprefix $(OBJ_PATH)/, $(DEP_FILES))
-
-### LIBS ###
-
-CXXFLAGS += -I ./$(INC_PATH)/
+DEP = $(SRC:%.cpp=%.d)
 
 ### RULES ###
 
@@ -52,7 +36,7 @@ PHONY += thread
 thread: CFLAGS += -g3 -fsanitize=thread
 thread: $(NAME)
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp | $(OBJ_PATH)
+%.o: %.cpp | $(OBJ_PATH)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJ_PATH):
@@ -60,7 +44,7 @@ $(OBJ_PATH):
 
 PHONY += clean
 clean:
-	rm -rf $(OBJ_PATH)
+	rm -rf $(OBJ)
 
 PHONY += fclean
 fclean: clean
