@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 01:02:12 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/12 01:24:05 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/12 13:09:49 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,26 @@
 
 # include <iostream>
 
+# define FIELDS_CNT 5
+
 class Contact {
 	public:
 		Contact();
 		~Contact();
+		int setInformation(int index);
+		void tableDisplay();
 
 	private:
-		std::string firstName;
-		std::string lastName;
-		std::string nickName;
-		std::string login;
-		std::string address;
-		std::string email;
-		std::string phone;
-		std::string birthday;
-		std::string favoriteMeal;
-		std::string underwearColor;
-		std::string secret;
+		enum fields {
+			firstName = 0,
+			lastName,
+			nickname,
+			phone,
+			darkestSecret
+		};
+
+		int index;
+		std::string fieldsInfo[FIELDS_CNT];
 };
 
 #endif

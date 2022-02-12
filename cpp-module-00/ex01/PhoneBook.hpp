@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 22:22:49 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/12 01:10:37 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/12 12:31:48 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class PhoneBook {
 		void addContact(void);
 		void searchContact();
 	private:
+		int newContactIndex;
+		int contactAmount;
 		Contact *contacts[MAX_CONTACTS];
 };
 
