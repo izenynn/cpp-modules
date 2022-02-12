@@ -6,14 +6,14 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 22:21:42 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/12 13:03:59 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/12 13:21:29 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
-
+#include "PhoneBook.hpp" 
 PhoneBook::PhoneBook() {
 	this->newContactIndex = 0;
+	this->contactAmount = 0;
 	for (int i = 0; i < MAX_CONTACTS; i++) {
 		this->contacts[i] = new Contact;
 	}
@@ -29,7 +29,7 @@ void PhoneBook::addContact() {
 	if (this->newContactIndex > MAX_CONTACTS) this->newContactIndex = 0;
 
 	Contact *tmp = new Contact;
-	if (tmp->setInformation(this->newContactIndex) == 0) {
+	if (tmp->setInformation(this->newContactIndex + 1) == 0) {
 		delete this->contacts[this->newContactIndex];
 		this->contacts[this->newContactIndex] = tmp;
 	}
@@ -50,6 +50,4 @@ void PhoneBook::searchContact() {
 	for (int i = 0; i < this->contactAmount; i++)
 		this->contacts[i]->tableDisplay();
 	std::cout << "|-------------------------------------------|" << std::endl;
-
-
 }

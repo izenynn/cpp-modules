@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 01:02:12 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/12 13:09:49 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/12 13:17:26 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define CONTACT_HPP_
 
 # include <iostream>
-
-# define FIELDS_CNT 5
 
 class Contact {
 	public:
@@ -25,6 +23,7 @@ class Contact {
 		void tableDisplay();
 
 	private:
+		static const int FIELDS_CNT = 5;
 		enum fields {
 			firstName = 0,
 			lastName,

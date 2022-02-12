@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 01:13:03 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/12 13:12:39 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/12 13:20:58 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ int Contact::setInformation(int index) {
 	std::cin >> this->fieldsInfo[4];
 
 	int length = 0;
-	int fields = this->FIELDS_CNT;
-	for (int i = 0; i < fields; i++) {
+	for (int i = 0; i < this->FIELDS_CNT; i++) {
 		length += this->fieldsInfo[i].length();
 	}
 	if (length == 0) {
@@ -47,7 +46,7 @@ int Contact::setInformation(int index) {
 void Contact::tableDisplay() {
 	std::cout << "|" << std::right << std::setw(10) << this->index;
 
-	for (int i = 0; i < this->FIELDS_CNT; i++) {
+	for (int i = 0; i < 3; i++) {
 		std::cout << "|";
 		if (this->fieldsInfo[i].length() > 10) {
 			std::cout << this->fieldsInfo[i].substr(0, 9) << ".";
