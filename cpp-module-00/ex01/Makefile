@@ -1,3 +1,7 @@
+### VARS ###
+
+UNAME_S := $(shell uname -s)
+
 ### PROGRAM ###
 
 NAME = phonebook
@@ -9,7 +13,10 @@ CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 ### SOURCES ###
 
-SRC = megaphone.cpp
+SRC =	main.cpp		\
+		PhoneBook.cpp	\
+		Contact.cpp		\
+
 
 OBJ = $(SRC:%.cpp=%.o)
 
@@ -25,15 +32,15 @@ $(NAME): $(OBJ)
 
 PHONY += sanitize
 ifeq ($(UNAME_S),Linux)
-sanitize: CFLAGS += -pedantic -g3 -fsanitize=address -fsanitize=leak -fsanitize=undefined -fsanitize=bounds -fsanitize=null
+sanitize: CXXFLAGS += -pedantic -g3 -fsanitize=address -fsanitize=leak -fsanitize=undefined -fsanitize=bounds -fsanitize=null
 endif
 ifeq ($(UNAME_S),Darwin)
-sanitize: CFLAGS += -pedantic -g3 -fsanitize=address
+sanitize: CXXFLAGS += -pedantic -g3 -fsanitize=address
 endif
 sanitize: $(NAME)
 
 PHONY += thread
-thread: CFLAGS += -g3 -fsanitize=thread
+thread: CXXFLAGS += -g3 -fsanitize=thread
 thread: $(NAME)
 
 %.o: %.cpp | $(OBJ_PATH)
