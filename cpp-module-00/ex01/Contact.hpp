@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 01:02:12 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/12 13:17:26 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/13 12:43:46 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class Contact {
 		~Contact();
 		int setInformation(int index);
 		void tableDisplay();
+		void fullDisplay();
 
 	private:
 		static const int FIELDS_CNT = 5;

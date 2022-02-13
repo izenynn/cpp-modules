@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 01:13:03 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/12 13:20:58 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/13 12:53:30 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,36 @@ Contact::Contact() {}
 Contact::~Contact() {}
 
 int Contact::setInformation(int index) {
+	int id;
+
 	this->index = index;
-	std::cout << "add contact: name: ";
-	std::cin >> this->fieldsInfo[0];
-	std::cout << "add contact: last name: ";
-	std::cin >> this->fieldsInfo[1];
-	std::cout << "add contact: nickname: ";
-	std::cin >> this->fieldsInfo[2];
-	std::cout << "add contact: phone number: ";
-	std::cin >> this->fieldsInfo[3];
-	std::cout << "add contact: darkest secret: ";
-	std::cin >> this->fieldsInfo[4];
+	id = -1;
+
+	std::cout << "Add contact: Name: ";
+	std::cin >> this->fieldsInfo[++id];
+	if (std::cin.eof()) { std::cin.clear(); return 1; }
+
+	std::cout << "Add contact: Last name: ";
+	std::cin >> this->fieldsInfo[++id];
+	if (std::cin.eof()) { std::cin.clear(); return 1; }
+
+	std::cout << "Add contact: Nickname: ";
+	std::cin >> this->fieldsInfo[++id];
+	if (std::cin.eof()) { std::cin.clear(); return 1; }
+
+	std::cout << "Add contact: Phone number: ";
+	std::cin >> this->fieldsInfo[++id];
+	if (std::cin.eof()) { std::cin.clear(); return 1; }
+
+	std::cout << "Add contact: Darkest secret: ";
+	std::cin >> this->fieldsInfo[++id];
+	if (std::cin.eof()) { std::cin.clear(); return 1; }
 
 	int length = 0;
 	for (int i = 0; i < this->FIELDS_CNT; i++) {
 		length += this->fieldsInfo[i].length();
 	}
-	if (length == 0) {
-		std::cout << "Error: empty contact not added" << std::endl;
-		return 1;
-	}
-	std::cout << "New contact added succesfully" << std::endl;
+	if (length == 0) return 1;
 	return 0;
 }
 
@@ -55,4 +64,17 @@ void Contact::tableDisplay() {
 		}
 	}
 	std::cout << "|" << std::endl;
+}
+
+void Contact::fullDisplay() {
+	int id;
+
+	std::cout << "Information of contact #" << this->index << "\n\n";
+
+	id = -1;
+	std::cout << "Name:           " << this->fieldsInfo[++id] << "\n";
+	std::cout << "Last name:      " << this->fieldsInfo[++id] << "\n";
+	std::cout << "Nickname:       " << this->fieldsInfo[++id] << "\n";
+	std::cout << "Phone number:   " << this->fieldsInfo[++id] << "\n";
+	std::cout << "Darkest secret: " << this->fieldsInfo[++id] << std::endl;
 }
