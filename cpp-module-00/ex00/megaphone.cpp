@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:56:15 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/11 21:51:32 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/13 17:41:04 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
 	for (int i = 1; i < argc; i++) {
 		std::string s = std::string(argv[i]);
 		for (size_t j = 0; j < s.length(); j++) {
-			std::cout << std::toupper(s[j]);
+			std::cout << (char)std::toupper(s[j]);
 		}
 	}
 	std::cout << std::endl;
