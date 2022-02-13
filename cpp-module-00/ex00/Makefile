@@ -5,7 +5,7 @@ NAME = megaphone
 ### COMPILER ###
 
 CXX = c++
-CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -MD
 
 ### SOURCES ###
 
@@ -45,6 +45,7 @@ $(OBJ_PATH):
 PHONY += clean
 clean:
 	rm -rf $(OBJ)
+	rm -rf $(DEP)
 
 PHONY += fclean
 fclean: clean
