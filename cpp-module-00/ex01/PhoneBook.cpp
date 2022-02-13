@@ -6,11 +6,14 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 22:21:42 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/13 13:15:48 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/13 23:46:20 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp" 
+
+#include <sstream>
+
 PhoneBook::PhoneBook() {
 	this->newContactIndex = 0;
 	this->contactAmount = 0;
@@ -34,14 +37,23 @@ void PhoneBook::addContact() {
 		delete this->contacts[this->newContactIndex];
 		this->contacts[this->newContactIndex] = tmp;
 		std::cout << "\nNew contact added succesfully\n";
+
+		this->newContactIndex++;
+		if (this->contactAmount < 8) this->contactAmount++;
 	} else {
-		std::cout << "\nError: empty contact not added\n";
+		delete tmp;
 	}
 	std::cout << std::endl;
-
-	this->newContactIndex++;
-	if (this->contactAmount < 8) this->contactAmount++;
 	return;
+}
+
+namespace {
+	bool stringIsalpha(const std::string &str) {
+		for (std::string::const_iterator it = str.begin(); it != str.end(); it++) {
+			if (std::isalpha(*it)) return true;
+		}
+		return false;
+	}
 }
 
 void PhoneBook::searchContact() {
@@ -58,16 +70,27 @@ void PhoneBook::searchContact() {
 		this->contacts[i]->tableDisplay();
 	std::cout << "|-------------------------------------------|" << std::endl;
 
+	bool run = true;
 	int id;
-	std::cout << "\nEnter index of a contact to display all information, or anything else to go back\n"
-		<< "Index: " << std::flush;
-	if (!(std::cin >> id)) {
-		std::cout << "\nInvalid index\n" << std::endl;
-		return;
-	} else if (id <= 0 || id > this->contactAmount) {
-		std::cout << "\nInvalid index\n" << std::endl;
-		return;
-	}
+	std::cout << "\nEnter index of a contact to display all information, or type \"EXIT\" to return\n";
+	do {
+		std::string str;
+		std::cout << "Index: " << std::flush;
+		std::getline(std::cin, str);
+		if (str == "EXIT") {
+			std::cout << std::endl;
+			return;
+		} else if (stringIsalpha(str)) {
+			std::cout << "\nInvalid index: value is not a number" << std::endl;
+		} else {
+			std::istringstream(str) >> id;
+			if (id <= 0 || id > this->contactAmount) {
+				std::cout << "\nInvalid index: out of range" << std::endl;
+			} else {
+				run = false;
+			}
+		}
+	} while (run);
 
 	std::cout << std::endl;
 	this->contacts[id - 1]->fullDisplay();

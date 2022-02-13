@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 22:55:32 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/13 13:10:51 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/13 20:47:37 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main() {
 	std::string line;
 	PhoneBook *phoneBook = new PhoneBook();
 
-	while (std::cout << "$> ", std::cin >> line) {
+	while (std::cout << "$> ", std::getline(std::cin, line)) {
 		if (line == "SEARCH") {
 			phoneBook->searchContact();
 		} else if (line == "ADD") {
@@ -33,8 +33,8 @@ int main() {
 			break;
 		}
 		std::cin.clear();
-		std::cin.ignore(INT_MAX, '\n');
 	}
+	std::cin.clear();
 
 	delete phoneBook;
 	return 0;
