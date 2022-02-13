@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 13:27:38 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/13 15:17:03 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/13 16:26:34 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ bool Account::makeWithdrawal(int withdrawal) {
 }
 
 int Account::checkAmount() const {
-	return (this->_amount > 0);
+	return this->_amount;
 }
 
 void Account::displayStatus() const {
