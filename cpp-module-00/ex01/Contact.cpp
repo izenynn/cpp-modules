@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 01:13:03 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/13 23:49:23 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/13 23:50:50 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void Contact::tableDisplay() {
 void Contact::fullDisplay() {
 	int id;
 
-	std::cout << "===== Information of contact #" << this->index << "=====\n\n";
+	std::cout << "===== Information of contact #" << this->index << " =====\n\n";
 
 	id = -1;
 	std::cout << "# Name:           " << this->fieldsInfo[++id] << "\n";
