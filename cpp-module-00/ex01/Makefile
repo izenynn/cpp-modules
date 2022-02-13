@@ -52,6 +52,7 @@ $(OBJ_PATH):
 PHONY += clean
 clean:
 	rm -rf $(OBJ)
+	rm -rf $(DEP)
 
 PHONY += fclean
 fclean: clean

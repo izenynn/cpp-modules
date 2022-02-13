@@ -4,7 +4,7 @@ UNAME_S := $(shell uname -s)
 
 ### PROGRAM ###
 
-NAME = phonebook
+NAME = account
 
 ### COMPILER ###
 
@@ -14,7 +14,7 @@ CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -MD
 ### SOURCES ###
 
 SRC =	tests.cpp		\
-		Account.cpp	\
+		Account.cpp		\
 
 
 OBJ = $(SRC:%.cpp=%.o)
@@ -51,6 +51,7 @@ $(OBJ_PATH):
 PHONY += clean
 clean:
 	rm -rf $(OBJ)
+	rm -rf $(DEP)
 
 PHONY += fclean
 fclean: clean
