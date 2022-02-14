@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 13:27:38 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/13 16:26:34 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/14 02:11:07 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,22 @@ int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
+
+Account::Account() {
+	this->_accountIndex = this->_nbAccounts;
+	this->_amount = 0;
+	this->_nbDeposits = 0;
+	this->_nbWithdrawals = 0;
+
+	Account::_nbAccounts++;
+
+	Account::_displayTimestamp();
+	std::cout
+		<< "index:" << this->_accountIndex << ";"
+		<< "amount:" << this->_amount << ";"
+		<< "created" << std::endl;
+
+}
 
 Account::Account(int initialDeposit) {
 
@@ -106,7 +122,7 @@ bool Account::makeWithdrawal(int withdrawal) {
 		std::cout
 			<< "withdrawal:" << withdrawal << ";"
 			<< "amount:" << this->_amount << ";"
-			<< "nb_withdrawal:" << this->_nbWithdrawals << std::endl;
+			<< "nb_withdrawals:" << this->_nbWithdrawals << std::endl;
 		return true;
 	} else {
 		std::cout << "withdrawal:refused" << std::endl;
