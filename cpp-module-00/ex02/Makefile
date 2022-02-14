@@ -4,7 +4,7 @@ UNAME_S := $(shell uname -s)
 
 ### PROGRAM ###
 
-NAME = account
+NAME = out
 
 ### COMPILER ###
 
