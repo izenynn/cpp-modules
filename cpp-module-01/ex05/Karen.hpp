@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:14:55 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/15 14:34:46 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/15 15:13:16 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ class Karen {
 		void info();
 		void warning();
 		void error();
+
+		typedef void (Karen::*f)();
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:42:32 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/15 15:01:37 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/15 15:14:28 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int main(int argc, char *argv[]) {
 
 	karen = new Karen;
 	for (int i = 1; i < argc; i++) {
+		if (i > 1) std::cout << std::endl;
 		karen->complain(argv[i]);
-		std::cout << std::endl;
 	}
 	delete karen;
 
