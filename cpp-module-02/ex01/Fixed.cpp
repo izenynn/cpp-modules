@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:16:47 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/15 18:14:44 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/15 18:24:56 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ Fixed::Fixed(const int value) {
 Fixed::Fixed(const float value) {
 	std::cout << "Float constructor called" << std::endl;
 	this->_rawBits = roundf(value *(1 << Fixed::_nFracBits));
-	;
 }
 
 Fixed::Fixed(const Fixed& other) {
