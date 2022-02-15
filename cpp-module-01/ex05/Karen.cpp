@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:14:42 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/15 14:41:55 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/15 15:03:02 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,12 @@ void Karen::complain(std::string level) {
 	};
 
 	for (int i = 0; i < kLevels; i++) {
-		if (complainLevels[i].compare(level)) {
+		if (complainLevels[i].compare(level) == 0) {
 			(this->*(functions[i]))();
+			return;
 		}
 	}
+	std::cerr << "Error: Invalid complain level" << std::endl;
 }
 
 void Karen::debug() {
