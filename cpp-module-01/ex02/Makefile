@@ -41,11 +41,8 @@ PHONY += thread
 thread: CXXFLAGS += -g3 -fsanitize=thread
 thread: $(NAME)
 
-%.o: %.cpp | $(OBJ_PATH)
+%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-$(OBJ_PATH):
-	mkdir -p $(OBJ_PATH)
 
 PHONY += clean
 clean:
