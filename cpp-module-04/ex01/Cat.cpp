@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 13:19:29 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/16 16:16:01 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:35:26 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,12 @@ Cat::~Cat() {
 }
 
 Cat& Cat::operator=(const Cat& other) {
-	this->type = other.type;
+	this->Animal::operator=(other);
 
 	//this->brain = other.brain; // shallow copy
 	*this->brain = *other.brain; // deep copy
 
 	std::cout << "Cat: Assignment operator" << std::endl;
-
-	return *this;
-}
-
-Animal& Cat::operator=(const Animal& other) {
-	this->type = other.getType();
-
-	//this->brain = other.getBrain(); // shallow copy
-	*this->brain = *other.getBrain(); // deep copy
-
-	std::cout << "Cat: Animal Assignment operator" << std::endl;
 
 	return *this;
 }

@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 13:09:12 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/16 16:36:43 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:26:41 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class Dog : public Animal {
 		~Dog();
 
 		Dog& operator=(const Dog& other);
-		Animal& operator=(const Animal& other);
 
 		void makeSound() const;
 

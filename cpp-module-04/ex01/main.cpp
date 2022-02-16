@@ -6,38 +6,44 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 13:22:05 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/16 16:35:56 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:32:11 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "Human.hpp"
 
 #include <iostream>
 
 #define N_ANIMALS 10
 
 int main() {
-	std::cout << "==================  PREVIUS TEST  ==================" << std::endl;
+	std::cout << "==================   SHITY TEST   ==================\n" << std::endl;
 
-	Animal *dog = new Dog();
-	Animal *cat = new Cat();
+	std::cout << "==================   BASIC TEST   ==================\n" << std::endl;
+
+	Dog *dog = new Dog();
+	Cat *cat = new Cat();
+	Human *human = new Human();
 
 	std::cout << std::endl;
 
 	std::cout << dog->getType() << std::endl;
 	std::cout << cat->getType() << std::endl;
+	std::cout << human->getType() << std::endl;
 
 	std::cout << std::endl;
 
 	dog->makeSound();
 	cat->makeSound();
+	human->makeSound();
 
 	std::cout << std::endl;
 
 	// TEST DEEP COPY
-	std::cout << "================== TEST DEEP COPY ==================" << std::endl;
+	std::cout << "================== TEST DEEP COPY ==================\n" << std::endl;
 
 	cat->getBrain()->ideas[0] = "I like potatoes";
 	cat->getBrain()->ideas[1] = "I like ice cream";
@@ -75,13 +81,16 @@ int main() {
 	for (int i = 0; i < 2; i++) std::cout << "Idea: " << cat2->getBrain()->ideas[i] << std::endl;
 	std::cout << std::endl;
 
-	std::cout << "==================   CLEAN ALL    ==================" << std::endl;
+	std::cout << "==================   CLEAN ALL    ==================\n" << std::endl;
 
 	delete dog;
 	delete cat;
 	delete cat2;
+	delete human;
 
-	std::cout << "================ SUBJECT ARRAY TEST ================" << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "================ SUBJECT ARRAY TEST ================\n" << std::endl;
 
 	Animal *animals[N_ANIMALS];
 
@@ -92,47 +101,7 @@ int main() {
 			animals[i] = new Dog();
 		}
 	}
-	std::cout << std::endl;
 
-	animals[2]->getBrain()->ideas[0] = "I like cheese cake";
-	animals[2]->getBrain()->ideas[1] = "I like chocolate";
-
-	std::cout << "animals[2] type: " << animals[2]->getType() << std::endl;
-	std::cout << "animals[2] ideas" << std::endl;
-	for (int i = 0; i < 2; i++) std::cout << "Idea: " << animals[2]->getBrain()->ideas[i] << std::endl;
-	std::cout << std::endl;
-
-	std::cout << "animals[8] type: " << animals[2]->getType() << std::endl;
-	std::cout << "animals[8] ideas" << std::endl;
-	for (int i = 0; i < 2; i++) std::cout << "Idea: " << animals[8]->getBrain()->ideas[i] << std::endl;
-	std::cout << std::endl;
-
-	std::cout << "animals[8] = animals[2]" << std::endl;
-	*(animals[8]) = *(animals[2]);
-	std::cout << std::endl;
-
-	std::cout << "animals[2] type: " << animals[2]->getType() << std::endl;
-	std::cout << "animals[2] ideas" << std::endl;
-	for (int i = 0; i < 2; i++) std::cout << "Idea: " << animals[2]->getBrain()->ideas[i] << std::endl;
-	std::cout << std::endl;
-
-	std::cout << "animals[8] type: " << animals[2]->getType() << std::endl;
-	std::cout << "animals[8] ideas" << std::endl;
-	for (int i = 0; i < 2; i++) std::cout << "Idea: " << animals[8]->getBrain()->ideas[i] << std::endl;
-	std::cout << std::endl;
-
-	std::cout << "animals[2] now hates chocolate" << std::endl;
-	animals[2]->getBrain()->ideas[1] = "I hate chocolate";
-	std::cout << std::endl;
-
-	std::cout << "animals[2] type: " << animals[2]->getType() << std::endl;
-	std::cout << "animals[2] ideas" << std::endl;
-	for (int i = 0; i < 2; i++) std::cout << "Idea: " << animals[2]->getBrain()->ideas[i] << std::endl;
-	std::cout << std::endl;
-
-	std::cout << "animals[8] type: " << animals[2]->getType() << std::endl;
-	std::cout << "animals[8] ideas" << std::endl;
-	for (int i = 0; i < 2; i++) std::cout << "Idea: " << animals[8]->getBrain()->ideas[i] << std::endl;
 	std::cout << std::endl;
 
 	for (int i = 0; i < N_ANIMALS; i++) {
