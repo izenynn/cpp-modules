@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 01:32:46 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/16 02:32:25 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/16 03:12:42 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ ScavTrap::ScavTrap() {
 	std::cout << this->_name << " ScavTrap created" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
+ScavTrap::ScavTrap(std::string name) {
 	this->_name = name;
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
