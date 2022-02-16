@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 01:14:44 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/16 02:13:50 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/16 02:43:40 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ int main() {
 	std::cout << std::endl;
 
 	c1->takeDamage(80);
-	c2->takeDamage(5);
-	c2->takeDamage(5);
-	c2->takeDamage(5);
+	c2->takeDamage(50);
+	c2->takeDamage(50);
 	c3->takeDamage(5);
 
 	std::cout << std::endl;
