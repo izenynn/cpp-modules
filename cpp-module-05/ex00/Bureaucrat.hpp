@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 12:12:36 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/17 12:46:01 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/17 22:09:28 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ class Bureaucrat {
 	public:
 		class GradeTooHighException : public std::exception {
 			const char* what() const throw () {
-				return "Grade too high, max value";
+				return "Exception: grade too high";
 			}
 		};
 		class GradeTooLowException : public std::exception {
 			const char* what() const throw() {
-				return "Grade too high, max value";
+				return "Exception: grade too low";
 			}
 		};
 };
