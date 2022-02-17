@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 02:56:42 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/17 03:21:22 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/17 21:35:06 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "MateriaSource.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
+
+#include <iostream>
 
 // TODO test unequip :D
 int main()
@@ -35,6 +37,41 @@ int main()
 
 	me->use(0, *bob);
 	me->use(1, *bob);
+
+	// MY TEST
+	std::cout << "\nMY TESTS:\n" << std::endl;
+
+	me->unequip(1);
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	std::cout << std::endl;
+
+	me->unequip(1);
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	std::cout << std::endl;
+
+	me->unequip(0);
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	std::cout << std::endl;
+
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	std::cout << std::endl;
+
+	me->unequip(0);
+	me->use(0, *bob);
+	me->use(1, *bob);
+	// ---
 
 	delete bob;
 	delete me;

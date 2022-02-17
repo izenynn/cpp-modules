@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 01:03:55 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/17 02:12:50 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/17 21:29:39 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,27 @@ void Character::equip(AMateria *m) {
 }
 
 void Character::unequip(int idx) {
-	int i = idx + 1;
-	for (; i < Character::kInventorySize && this->_inventory[i] != NULL; i++) {
-		this->_inventory[i - 1] = this->_inventory[i];
+	if (idx >= 0 && idx < this->_nEquiped) {
+		int i = idx;
+		for (; i < this->_nEquiped - 1; i++) {
+			this->_inventory[i] = this->_inventory[i + 1];
+		}
+		this->_inventory[i] = NULL;
+		--(this->_nEquiped);
 	}
-	this->_inventory[i] = NULL;
+
+	// debug
+	/*for (int j = 0; j < Character::kInventorySize; j++) {
+		std::cout << "inv: " << this->_inventory[j] << std::endl;
+	}
+	std::cout << std::endl;*/
 }
 
 void Character::use(int idx, ICharacter &target) {
-	if (idx >= 0 || idx < this->_nEquiped) {
+	//std::cout << "idx: " << idx << ", nequip: " << this->_nEquiped << std::endl;
+	if (idx >= 0 && idx < this->_nEquiped) {
 		this->_inventory[idx]->use(target);
+	} else {
+		std::cout << "can't use materia, index " << idx << " is empty" << std::endl;
 	}
 }
