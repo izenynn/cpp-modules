@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:14:42 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/15 15:13:00 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/17 22:25:11 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void Karen::complain(std::string level) {
 		"ERROR"
 	};
 
-	f functions[kLevels] = {
+	//void (Karen::*functions[4])() = {
+	f functions[kLevels] = { // f is a typedef in Karen.hpp
 		&Karen::debug,
 		&Karen::info,
 		&Karen::warning,
