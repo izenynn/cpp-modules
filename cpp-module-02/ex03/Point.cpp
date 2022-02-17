@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 19:42:24 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/15 21:25:59 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:26:46 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ Point::~Point() {}
 
 /********** COPY ASSIGNEMENT OPERATOR **********/
 
+Point& Point::operator=(const Point& other) { (void)other; return *this; }
 /*Point& Point::operator=(const Point& other) {
 	if (this != &other) {
 		return *this;

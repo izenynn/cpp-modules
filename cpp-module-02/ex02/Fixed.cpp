@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:16:47 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/15 19:14:35 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:23:34 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,18 @@ bool Fixed::operator>(const Fixed& other) const {
 }
 
 bool Fixed::operator<(const Fixed& other) const {
-	return this->_rawBits < other._rawBits;
+	//return this->_rawBits < other._rawBits;
+	return other > *this;
 }
 
 bool Fixed::operator>=(const Fixed& other) const {
-	return this->_rawBits >= other._rawBits;
+	//return this->_rawBits >= other._rawBits;
+	return !(other > *this);
 }
 
 bool Fixed::operator<=(const Fixed& other) const {
-	return this->_rawBits <= other._rawBits;
+	//return this->_rawBits <= other._rawBits;
+	return !(*this > other);
 }
 
 bool Fixed::operator==(const Fixed& other) const {
@@ -65,7 +68,8 @@ bool Fixed::operator==(const Fixed& other) const {
 }
 
 bool Fixed::operator!=(const Fixed& other) const {
-	return this->_rawBits != other._rawBits;
+	//return this->_rawBits != other._rawBits;
+	return !(this->_rawBits == other._rawBits);
 }
 
 /*********** ARITHMETIC OPERATORS ***********/
@@ -97,26 +101,26 @@ Fixed Fixed::operator/(const Fixed& other) const {
 /*********** INCREMENT & DECREMENT ***********/
 
 Fixed& Fixed::operator++() {
-	this->_rawBits++;
+	++(this->_rawBits);
 	return (*this);
 }
 
 Fixed& Fixed::operator--() {
-	this->_rawBits--;
+	--(this->_rawBits);
 	return (*this);
 }
 
 Fixed Fixed::operator++(int) {
 	Fixed prev(*this);
 
-	this->_rawBits++;
+	++(this->_rawBits);
 	return prev;
 }
 
 Fixed Fixed::operator--(int) {
 	Fixed prev(*this);
 
-	this->_rawBits--;
+	--(this->_rawBits);
 	return prev;
 }
 

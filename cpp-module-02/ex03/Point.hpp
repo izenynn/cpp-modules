@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 19:41:04 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/15 21:26:38 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:26:14 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ class Point {
 		Point(const Point& other);
 		~Point();
 
-		Point& operator=(const Point& other); // Don't implement
-
 		Fixed getX() const;
 		Fixed getY() const;
 	private:
+		Point& operator=(const Point& other); // Don't implement
+
 		const Fixed x;
 		const Fixed y;
 };
