@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 12:27:42 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/17 12:46:48 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/17 22:21:52 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,14 @@ void Bureaucrat::decrement(int quantity) {
 	std::cout << "Decrementing grade by " << quantity << std::endl;
 	this->_grade += quantity;
 	checkGrade(this->_grade);
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Exception: grade too high";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Exception: grade too low";
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& instance) {
