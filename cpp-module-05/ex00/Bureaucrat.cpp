@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 12:27:42 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/17 22:21:52 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/18 00:48:49 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,26 +54,26 @@ int Bureaucrat::getGrade() const {
 
 void Bureaucrat::increment() {
 	std::cout << "Incrementing grade by 1" << std::endl;
-	this->_grade--;
-	checkGrade(this->_grade);
+	checkGrade(this->_grade - 1);
+	--this->_grade;
 }
 
 void Bureaucrat::increment(int quantity) {
 	std::cout << "Incrementing grade by " << quantity << std::endl;
+	checkGrade(this->_grade - quantity);
 	this->_grade -= quantity;
-	checkGrade(this->_grade);
 }
 
 void Bureaucrat::decrement() {
 	std::cout << "Decrementing grade by 1" << std::endl;
-	this->_grade++;
-	checkGrade(this->_grade);
+	checkGrade(this->_grade + 1);
+	++this->_grade;
 }
 
 void Bureaucrat::decrement(int quantity) {
 	std::cout << "Decrementing grade by " << quantity << std::endl;
+	checkGrade(this->_grade + quantity);
 	this->_grade += quantity;
-	checkGrade(this->_grade);
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
