@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 02:20:12 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/17 03:19:06 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/18 16:15:16 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void MateriaSource::learnMateria(AMateria *materia) {
 AMateria *MateriaSource::createMateria(const std::string& type) {
 	for (int i = 0; i < MateriaSource::kMateriaSize; i++) {
 		if (this->_materias[i]->getType() == type) {
-			//return this->_materias[i]->clone(); // subject says to return a copy, but that generates leaks using their main.cpp so...
-			return this->_materias[i];
+			return this->_materias[i]->clone(); // deep copy
+			//return this->_materias[i]; // shallow copy
 		}
 	}
 	return NULL;

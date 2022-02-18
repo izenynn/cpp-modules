@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 02:56:42 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/17 21:35:06 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/18 16:21:32 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int main()
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
-
 	me->equip(tmp);
 
 	ICharacter* bob = new Character("bob");
@@ -61,8 +60,10 @@ int main()
 
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
+
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+
 	me->use(0, *bob);
 	me->use(1, *bob);
 
@@ -76,5 +77,6 @@ int main()
 	delete bob;
 	delete me;
 	delete src;
+
 	return 0;
 }
