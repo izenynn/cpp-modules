@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 12:47:06 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/18 00:38:12 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/18 15:58:23 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,9 @@ int main() {
 
 	std::cout << std::endl;
 
-	std::cout << *budgets << std::endl;
-
-	std::cout << std::endl;
-
 	// Bureaucrat::signForm()
+	std::cout << *budgets;
+	std::cout << std::endl;
 	try {
 		poor->signForm(*budgets);
 	} catch (std::exception& e) {
@@ -112,6 +110,8 @@ int main() {
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
+	std::cout << std::endl;
+	std::cout << *budgets;
 
 	std::cout << std::endl;
 
