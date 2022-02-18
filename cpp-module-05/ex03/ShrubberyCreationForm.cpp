@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 01:35:50 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/18 02:19:21 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/18 22:50:23 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 void ShrubberyCreationForm::executeAction() const {
 	std::ofstream out;
 
-	out.open((this->getTarget() + "_shrubbery").c_str(), std::ofstream::in | std::ofstream::trunc);
+	out.open((this->getTarget() + "_shrubbery").c_str(), std::ofstream::out | std::ofstream::trunc);
 
 	out << std::endl;
 	out << "               ,@@@@@@@,                  " << std::endl;
