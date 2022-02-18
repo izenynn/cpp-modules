@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 23:13:03 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/18 00:37:46 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/18 02:56:21 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ namespace {
 Form::Form()
 		: _signed(false),
 		  _name("form"),
+		  _target("none"),
 		  _signGrade(150),
 		  _executeGrade(150) {}
 
-Form::Form(const std::string& name, int signGrade, int executeGrade)
+Form::Form(const std::string& name, const std::string& target, int signGrade, int executeGrade)
 		: _signed(false),
 		  _name(name),
+		  _target(target),
 		  _signGrade(signGrade),
 		  _executeGrade(executeGrade) {
 	checkGrade(signGrade);
@@ -38,9 +40,10 @@ Form::Form(const std::string& name, int signGrade, int executeGrade)
 Form::Form(const Form& other)
 		: _signed(other._signed),
 		  _name(other._name),
+		  _target(other._target),
 		  _signGrade(other._signGrade),
 		  _executeGrade(other._executeGrade) {
-	std::cout << "Copy of form created" << std::endl;
+	std::cout << "Copy of Form created" << std::endl;
 }
 
 Form::~Form() {
@@ -55,6 +58,10 @@ Form& Form::operator=(const Form& other) {
 
 const std::string& Form::getName() const {
 	return this->_name;
+}
+
+const std::string& Form::getTarget() const {
+	return this->_target;
 }
 
 bool Form::getSigned() const {
@@ -79,6 +86,20 @@ void Form::beSigned(const Bureaucrat& bureaucrat) {
 	}
 }
 
+void Form::beExecuted(const Bureaucrat& bureaucrat) const {
+	if (this->_signed == false) {
+		std::cout << bureaucrat.getName() << " can't execute " << this->_name << std::endl;
+		throw Form::NotSigned();
+	}
+	if (bureaucrat.getGrade() > this->_executeGrade) {
+		std::cout << bureaucrat.getName() << " can't execute " << this->_name << std::endl;
+		throw Form::GradeTooLowException();
+	}
+
+	std::cout << bureaucrat.getName() << " has executed " << this->_name << std::endl;
+	this->executeAction();
+}
+
 const char* Form::GradeTooHighException::what() const throw() {
 	return "Exception: grade too high";
 }
@@ -87,11 +108,14 @@ const char* Form::GradeTooLowException::what() const throw() {
 	return "Exception: grade too low";
 }
 
+const char* Form::NotSigned::what() const throw() {
+	return "Exception: form is not signed so it can't be executed";
+}
+
 std::ostream& operator<<(std::ostream& os, const Form& instance) {
 	os << "Form " << instance.getName()
 		<< ", status: " << (instance.getSigned() ? "signed" : "not signed")
 		<< ", sign grade: " << instance.getSignGrade()
-		<< ", execute grade: " << instance.getExecuteGrade()
-		<< std::endl;
+		<< ", execute grade: " << instance.getExecuteGrade();
 	return os;
 }

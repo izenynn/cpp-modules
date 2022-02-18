@@ -6,12 +6,15 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 12:47:06 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/18 00:38:12 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/18 03:04:38 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 #include <iostream>
 
@@ -90,49 +93,100 @@ int main() {
 
 	std::cout << "\n========== FORM ==========\n" << std::endl;
 
-	Bureaucrat* poor = new Bureaucrat("Poor", 130);
-	Bureaucrat* rich = new Bureaucrat("Rich", 15);
-	Form* budgets = new Form("budgets", 30, 10);
+	Bureaucrat* b150 = new Bureaucrat("b150", 150);
+	Bureaucrat* b140 = new Bureaucrat("b140", 140);
+	Bureaucrat* b100 = new Bureaucrat("b100", 100);
+	Bureaucrat* b1 = new Bureaucrat("b1", 1);
 
 	std::cout << std::endl;
 
-	std::cout << *budgets << std::endl;
+	std::cout << *b150 << std::endl;
+	std::cout << *b140 << std::endl;
+	std::cout << *b100 << std::endl;
+	std::cout << *b1 << std::endl;
 
 	std::cout << std::endl;
 
-	// Bureaucrat::signForm()
-	try {
-		poor->signForm(*budgets);
+	ShrubberyCreationForm *garden = new ShrubberyCreationForm("garden");
+	RobotomyRequestForm *neighbor = new RobotomyRequestForm("neighbor");
+	PresidentialPardonForm *rick = new PresidentialPardonForm("rick");
+
+	std::cout << std::endl;
+
+	std::cout << *garden << std::endl;
+	std::cout << *neighbor << std::endl;
+	std::cout << *rick << std::endl;
+
+	std::cout << std::endl;
+
+	// ShrubberyCreationForm
+	try { // try to execute before sign
+		b100->executeForm(*garden);
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+	try { // try to sign with low level
+		b150->signForm(*garden);
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+	try { // sign
+		b140->signForm(*garden);
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << *garden << std::endl; // display update info
+	try { // try to execute with low level
+		b140->executeForm(*garden);
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+	try { // execute
+		b100->executeForm(*garden);
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 
-	try {
-		rich->signForm(*budgets);
+	std::cout << std::endl;
+
+	// RobotomyRequestForm (execute main multiple times to check randomizer is working)
+	try { // sign
+		b1->signForm(*neighbor);
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+	try { // execute
+		b1->executeForm(*neighbor);
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
 
-	// Form::beSigned()
-	try {
-		budgets->beSigned(*poor);
+	// PresidentialPardonForm
+	try { // sign
+		b1->signForm(*rick);
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
-	
-	try {
-		budgets->beSigned(*rich);
+	try { // execute
+		b1->executeForm(*rick);
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
 
-	delete poor;
-	delete rich;
-	delete budgets;
+	delete garden;
+	delete neighbor;
+	delete rick;
+
+	std::cout << std::endl;
+
+	delete b150;
+	delete b140;
+	delete b100;
+	delete b1;
 
 	return 0;
 }

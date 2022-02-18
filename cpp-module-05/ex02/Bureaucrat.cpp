@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 12:27:42 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/18 00:48:24 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/18 00:57:07 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,16 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 	return "Exception: grade too low";
 }
 
-void Bureaucrat::signForm(Form& form) {
+void Bureaucrat::signForm(Form& form) const {
 	form.beSigned(*this);
+}
+
+void Bureaucrat::executeForm(const Form& form) const {
+	try {
+		form.beExecuted(*this);
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& instance) {
