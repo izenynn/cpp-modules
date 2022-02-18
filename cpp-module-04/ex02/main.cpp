@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 13:22:05 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/16 18:32:11 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/18 12:37:55 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,12 @@ int main() {
 		} else {
 			animals[i] = new Dog();
 		}
+	}
+
+	std::cout << std::endl;
+
+	for (int i = 0; i < N_ANIMALS; i++) {
+		animals[i]->makeSound();
 	}
 
 	std::cout << std::endl;
