@@ -16,6 +16,9 @@ CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -MD
 SRC =	main.cpp		\
 
 
+#SRC =	main42.cpp		\
+
+
 OBJ = $(SRC:%.cpp=%.o)
 
 DEP = $(SRC:%.cpp=%.d)
