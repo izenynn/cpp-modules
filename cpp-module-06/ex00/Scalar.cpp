@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:47:49 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/19 11:53:03 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/19 12:51:09 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,15 @@ void Scalar::convert(const std::string& literal) {
 
 	//else if it is a number
 	toInt = std::atoi(literal.c_str());
-	toFloat = std::atof(literal.c_str());
+
+	// check if it is float or int / double
+	if (literal[literal.length() - 1] == 'f') {
+		toFloat = std::atof(literal.c_str());
+		toDouble = static_cast<double>(toFloat);
+	} else {
+		toDouble = std::atof(literal.c_str());
+		toFloat = static_cast<float>(toDouble);
+	}
 
 	for (int i = 0; i < 6; ++i) {
 		if (literal == specialTypes[i]) {
@@ -59,8 +67,6 @@ void Scalar::convert(const std::string& literal) {
 	} else if (toChar == "") {
 		toChar = "Non displayable";
 	}
-
-	toDouble = static_cast<double>(toFloat);
 
 	std::cout << "char: " << toChar << std::endl;
 	if (toChar == "imposible") {
