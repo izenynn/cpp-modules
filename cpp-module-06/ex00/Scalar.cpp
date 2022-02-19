@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:47:49 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/19 11:31:55 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/19 11:53:03 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,24 @@ void Scalar::convert(const std::string& literal) {
 		"-inff", "+inff", "nanf",
 		"-inf", "+inf", "nan"
 	};
-
 	std::string toChar = "";
-	int toInt = std::atoi(literal.c_str());
-	float toFloat = std::atof(literal.c_str());
+	int toInt = 0;
+	float toFloat = 0;
 	double toDouble = 0;
+
+	//if is a char
+	if (literal.size() == 1 && std::isprint(literal[0])) {
+		toChar = literal[0];
+		std::cout << "char: " << toChar << std::endl;
+		std::cout << "int: " << static_cast<int>(toChar[0]) << std::endl;
+		std::cout << "float: " << static_cast<float>(toChar[0]) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(toChar[0]) << ".0" << std::endl;
+		return;
+	}
+
+	//else if it is a number
+	toInt = std::atoi(literal.c_str());
+	toFloat = std::atof(literal.c_str());
 
 	for (int i = 0; i < 6; ++i) {
 		if (literal == specialTypes[i]) {
@@ -49,7 +62,6 @@ void Scalar::convert(const std::string& literal) {
 
 	toDouble = static_cast<double>(toFloat);
 
-	// Display
 	std::cout << "char: " << toChar << std::endl;
 	if (toChar == "imposible") {
 		std::cout << "int: imposible" << std::endl;
