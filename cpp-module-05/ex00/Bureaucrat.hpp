@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 12:12:36 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/20 14:52:47 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/20 18:02:33 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ class Bureaucrat {
 	private:
 		Bureaucrat();
 
-		std::string _name;
+		const std::string _name;
 		int _grade;
 	public:
 		class GradeTooHighException : public std::exception {

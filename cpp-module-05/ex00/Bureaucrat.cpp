@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 12:27:42 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/18 00:48:49 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/20 18:03:57 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade)
 	std::cout << "Bureaucrat created" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& other) {
+Bureaucrat::Bureaucrat(const Bureaucrat& other)
+		: _name(other._name) {
 	*this = other;
 	std::cout << "Copy of bureaucrat created" << std::endl;
 }
@@ -38,7 +39,6 @@ Bureaucrat::~Bureaucrat() {
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
-	this->_name = other._name;
 	this->_grade = other._grade;
 	std::cout << "Assignment operator" << std::endl;
 	return *this;
