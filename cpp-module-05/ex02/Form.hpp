@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 23:09:13 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/18 02:43:56 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/20 14:54:06 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ class Form {
 		const int _executeGrade;
 	public:
 		class GradeTooHighException : public std::exception {
-			const char* what() const throw();
+			public: const char* what() const throw();
 		};
 		class GradeTooLowException : public std::exception {
-			const char* what() const throw();
+			public: const char* what() const throw();
 		};
 		class NotSigned : public std::exception {
-			const char* what() const throw();
+			public: const char* what() const throw();
 		};
 };
 
