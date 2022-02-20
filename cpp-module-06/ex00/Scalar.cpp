@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:47:49 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/19 12:51:09 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/20 14:51:20 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void Scalar::convert(const std::string& literal) {
 	double toDouble = 0;
 
 	//if is a char
-	if (literal.size() == 1 && std::isprint(literal[0])) {
+	if (literal.size() == 1 && std::isprint(literal[0]) && !std::isdigit(literal[0])) {
 		toChar = literal[0];
 		std::cout << "char: " << toChar << std::endl;
 		std::cout << "int: " << static_cast<int>(toChar[0]) << std::endl;
