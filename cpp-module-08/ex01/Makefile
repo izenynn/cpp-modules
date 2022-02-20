@@ -14,6 +14,7 @@ CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -MD
 ### SOURCES ###
 
 SRC =	main.cpp		\
+		span.cpp		\
 
 
 OBJ = $(SRC:%.cpp=%.o)
