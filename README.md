@@ -2,7 +2,7 @@
 
 ## Info
 
-42 Cursus: c++ modules for learning the language
+42 Cursus: c++ modules for learning the language.
 
 - Status: finished
 - Result: 100% on all modules
