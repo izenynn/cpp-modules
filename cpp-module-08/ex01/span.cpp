@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 01:35:56 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/20 02:44:07 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/21 13:12:15 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void Span::addNumber(int n) {
 }
 
 void Span::addRange(IT begin, IT end) {
-	if (this->_vector.size() + std::distance(begin, end) - 1 >= this->_size) {
+	if (this->_vector.size() + std::distance(begin, end) > this->_size) {
 		throw Span::SpanIsFullException();
 	}
 	this->_vector.insert(this->_vector.end(), begin, end);
