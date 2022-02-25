@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 01:35:56 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/21 13:12:15 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/25 13:42:40 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void Span::addRange(IT begin, IT end) {
 	this->_vector.insert(this->_vector.end(), begin, end);
 }
 
-int Span::shortestSpan() const {
+unsigned int Span::shortestSpan() const {
 	if (this->_size < 2 || this->_vector.size() < 2) throw Span::SizeTooSmallException();
 
 	std::vector<int> copy(this->_vector);
@@ -61,7 +61,7 @@ int Span::shortestSpan() const {
 	return ret;
 }
 
-int Span::longestSpan() const {
+unsigned int Span::longestSpan() const {
 	if (this->_size < 2 || this->_vector.size() < 2) throw Span::SizeTooSmallException();
 	return *std::max_element(this->_vector.begin(), this->_vector.end())
 		- *std::min_element(this->_vector.begin(), this->_vector.end());

@@ -6,7 +6,7 @@
 /*   By: dpoveda- <me@izenynn.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 01:36:14 by dpoveda-          #+#    #+#             */
-/*   Updated: 2022/02/20 02:03:28 by dpoveda-         ###   ########.fr       */
+/*   Updated: 2022/02/25 13:42:06 by dpoveda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ class Span {
 		void addNumber(int n);
 		void addRange(IT begin, IT end);
 
-		int shortestSpan() const;
-		int longestSpan() const;
+		unsigned int shortestSpan() const;
+		unsigned int longestSpan() const;
 
 		std::size_t size() const;
 	private:
