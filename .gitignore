@@ -59,11 +59,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# Program name
-minishell
-
-# Test files
-in
-infile
+# executable name on almost all modules
 out
-outfile
+**/out
