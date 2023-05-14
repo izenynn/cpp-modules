@@ -11,13 +11,13 @@ NAME = PmergeMe
 ### COMPILER ###
 
 CXX = c++
-CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -Wpedantic -Wshadow -MMD
 
 ### SOURCES ###
 
 SRC = \
-	main.cpp					\
-	PmergeMe.cpp				\
+	main.cpp		\
+	PmergeMe.cpp	\
 
 OBJ = $(SRC:%.cpp=%.o)
 
