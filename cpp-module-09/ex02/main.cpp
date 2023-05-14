@@ -21,20 +21,20 @@ void print_container(const std::string &mesg, const T &c)
 }
 
 template <class T>
-double bench_container(T &c)
+std::chrono::duration<double, std::micro> bench_container(T &c)
 {
-	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+	std::chrono::steady_clock::time_point start = std::chrono::high_resolution_clock::now();
 	PmergeMe::process(c);
-	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-	double time_vector = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count();
-	return time_vector;
+	std::chrono::steady_clock::time_point end = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<double, std::micro> elapsed = end - start;
+	return elapsed;
 }
 
 } // namespace
 
 int main(int argc, char* argv[])
 {
-	if (argc <= 1) {
+	if (argc < 2) {
 		std::cout << "Error: No arguments provided.\n";
 		return 1;
 	}
@@ -59,13 +59,22 @@ int main(int argc, char* argv[])
 
 	print_container("Before: ", v);
 
-	double time_vector = bench_container(v);
-	double time_deque = bench_container(d);
+	std::chrono::duration<double, std::micro> time_vector = bench_container(v);
+	std::chrono::duration<double, std::micro> time_deque = bench_container(d);
 
 	print_container("After: ", v);
 
-	std::cout << "Time to process a range of " << v.size() << " elements with std::vector : " << time_vector << " us\n";
-	std::cout << "Time to process a range of " << d.size() << " elements with std::deque : " << time_deque << " us\n";
+	std::cout << "Time to process a range of "
+	          << v.size()
+	          << " elements with std::vector : "
+	          << time_vector.count()
+	          << " us\n";
+
+	std::cout << "Time to process a range of "
+	          << d.size()
+	          << " elements with std::deque : "
+	          << time_deque.count()
+	          << " us\n";
 
 	return 0;
 }

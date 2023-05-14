@@ -2,6 +2,8 @@
 
 UNAME_S := $(shell uname -s)
 
+SIZE ?= 100
+
 ### PROGRAM ###
 
 NAME = PmergeMe
@@ -59,7 +61,7 @@ re: fclean all
 
 PHONY += check
 check: $(NAME)
-	@./$(NAME) `python3 -c 'import random; print(" ".join(map(str, random.sample(range(1, 100001), 100))))'`
+	@./$(NAME) `python3 -c 'import random; print(" ".join(map(str, random.sample(range(1, 100001), $(SIZE)))))'`
 
 -include $(DEP)
 
