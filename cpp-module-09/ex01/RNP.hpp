@@ -27,7 +27,7 @@ private:
 		token_type (*calc)(const token_type &lhs, const token_type &rhs);
 	} operations_[op_size];
 
-	static void GetOperandsTokens(token_type &lhs, token_type &rhs);
+	static void PopOperandsTokens(token_type &lhs, token_type &rhs);
 	static void PushToken(token_type token);
 
 	static void operate(op_type symbol);
