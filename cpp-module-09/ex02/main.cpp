@@ -2,8 +2,7 @@
 #include <vector>
 #include <deque>
 #include <sstream>
-#include <memory>
-#include <chrono>
+#include <ctime>
 
 #include "PmergeMe.hpp"
 
@@ -21,18 +20,18 @@ void print_container(const std::string &mesg, const T &c)
 }
 
 template <class T>
-std::chrono::duration<double, std::micro> bench_container(T &c)
+double bench_container(T &c)
 {
-	std::chrono::steady_clock::time_point start = std::chrono::high_resolution_clock::now();
+	std::clock_t start = std::clock();
 	PmergeMe::process(c);
-	std::chrono::steady_clock::time_point end = std::chrono::high_resolution_clock::now();
-	std::chrono::duration<double, std::micro> elapsed = end - start;
+	std::clock_t end = std::clock();
+	double elapsed = 1000000.0 * (end - start) / CLOCKS_PER_SEC;
 	return elapsed;
 }
 
 } // namespace
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
 	if (argc < 2) {
 		std::cout << "Error: No arguments provided.\n";
@@ -45,7 +44,7 @@ int main(int argc, char* argv[])
 	for (int i = 1; i < argc; ++i) {
 		std::stringstream ss(argv[i]);
 		int num;
-		if ((ss >> num).fail() || !(ss >> std::ws).eof()) {
+		if (!(ss >> num) || !ss.eof()) {
 			std::cout << "Error: Invalid input.\n";
 			return 1;
 		}
@@ -59,21 +58,21 @@ int main(int argc, char* argv[])
 
 	print_container("Before: ", v);
 
-	std::chrono::duration<double, std::micro> time_vector = bench_container(v);
-	std::chrono::duration<double, std::micro> time_deque = bench_container(d);
+	double time_vector = bench_container(v);
+	double time_deque = bench_container(d);
 
 	print_container("After: ", v);
 
 	std::cout << "Time to process a range of "
 	          << v.size()
 	          << " elements with std::vector : "
-	          << time_vector.count()
+	          << time_vector
 	          << " us\n";
 
 	std::cout << "Time to process a range of "
 	          << d.size()
 	          << " elements with std::deque : "
-	          << time_deque.count()
+	          << time_deque
 	          << " us\n";
 
 	return 0;
