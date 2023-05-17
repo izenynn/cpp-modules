@@ -43,7 +43,7 @@ void RNP::PushToken(token_type token)
 	stack_.push(token);
 }
 
-void RNP::operate(op_type symbol)
+void RNP::Operate(op_type symbol)
 {
 	for (short i = 0; i < op_size; ++i) {
 		if (operations_[i].symbol == symbol) {

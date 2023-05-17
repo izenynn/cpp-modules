@@ -1,5 +1,5 @@
-#ifndef RNP_HPP_
-#define RNP_HPP_
+#ifndef EX01_RNP_HPP_
+#define EX01_RNP_HPP_
 
 #include <string> // std::string
 #include <stack> // stack<>
@@ -30,7 +30,7 @@ private:
 	static void PopOperandsTokens(token_type &lhs, token_type &rhs);
 	static void PushToken(token_type token);
 
-	static void operate(op_type symbol);
+	static void Operate(op_type symbol);
 
 	static token_type OpSum(const token_type &lhs, const token_type &rhs);
 	static token_type OpSub(const token_type &lhs, const token_type &rhs);
@@ -38,4 +38,4 @@ private:
 	static token_type OpDiv(const token_type &lhs, const token_type &rhs);
 };
 
-#endif // RNP_HPP_
+#endif // EX01_RNP_HPP_

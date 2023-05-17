@@ -1,5 +1,5 @@
-#ifndef PMERGEME_HPP_
-#define PMERGEME_HPP_
+#ifndef EX02_PMERGEME_HPP_
+#define EX02_PMERGEME_HPP_
 
 #include <vector>
 #include <deque>
@@ -78,4 +78,4 @@ private:
 	}
 };
 
-#endif // PMERGEME_HPP_
+#endif // EX02_PMERGEME_HPP_
