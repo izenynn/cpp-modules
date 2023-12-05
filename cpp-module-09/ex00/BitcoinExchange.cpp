@@ -34,10 +34,15 @@ BitcoinExchange::BitcoinExchange(const std::string& filename) {
 
 double BitcoinExchange::GetExchangeRate(const std::string &date) {
 	std::map<std::string, double>::iterator it = data_.lower_bound(date);
+
+	if (it->first != date && it != data_.begin()) {
+		--it;
+	}
+
 	if (it != data_.end()) {
 		return it->second;
 	} else if (!data_.empty()) {
-		return (--it)->second;
+		return it->second;
 	}
 
 	return -1.0;
