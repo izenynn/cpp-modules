@@ -58,19 +58,6 @@ fclean: clean
 PHONY += re
 re: fclean all
 
-PHONY += check
-check: $(NAME)
-	./$(NAME) || true
-	./$(NAME) "89 * 9 - 9 - 9 - 4 - 1 +"
-	./$(NAME) "77 * 7 -"
-	./$(NAME) "(1 + 1)" || true
-	./$(NAME) "424242 +" || true
-	./$(NAME) "4 + 4" || true
-	./$(NAME) "21 +"
-	./$(NAME) "42 -"
-	./$(NAME) "24 -"
-	./$(NAME) "22 - 0 /" || true
-
 -include $(DEP)
 
 .PHONY: $(PHONY)
