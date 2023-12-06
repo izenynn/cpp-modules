@@ -13,6 +13,9 @@ const struct RNP::operations RNP::operations_[op_size] = {
 
 RNP::result_type RNP::ResolveExpression(const std::string &line)
 {
+	if (line.empty()) {
+		return 0;
+	}
 	for (std::string::const_iterator it = line.begin(); it != line.end(); ++it) {
 		if (std::isspace(*it))
 			continue;
