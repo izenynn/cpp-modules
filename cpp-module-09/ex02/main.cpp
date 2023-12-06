@@ -9,6 +9,22 @@
 namespace {
 
 template <class T>
+void print_okey(const T &c)
+{
+	typedef typename T::const_iterator const_iterator;
+
+	const_iterator prev = c.begin();
+	const_iterator it = c.begin() + 1;
+	for (; it != c.end(); ++it) {
+		if (*prev > *it) {
+			std::cout << "KO :(" << std::endl;
+			return;
+		}
+	}
+	std::cout << "OK :D" << std::endl;
+}
+
+template <class T>
 void print_container(const std::string &mesg, const T &c)
 {
 	typedef typename T::const_iterator const_iterator;
@@ -74,6 +90,8 @@ int main(int argc, char *argv[])
 	          << " elements with std::deque : "
 	          << time_deque
 	          << " us\n";
+
+	print_okey(v);
 
 	return 0;
 }
