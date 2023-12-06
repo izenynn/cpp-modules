@@ -33,6 +33,7 @@ private:
 	{
 		if (start >= end) return; // Base case for single element or invalid range
 	
+		// Base case for two elements
 		if (end - start == 1) {
 			if (c[start] > c[end]) {
 				std::swap(c[start], c[end]);
@@ -55,10 +56,10 @@ private:
 		}
 	
 		// Find median of medians
-		int medianOfMediansIndex = selectMedian(c, medians);
+		int medianOfMedians = selectMedian(c, medians);
 	
 		// Partition around median of medians
-		int mid = partition(c, start, end, medianOfMediansIndex);
+		int mid = partition(c, start, end, medianOfMedians);
 	
 		// Recursively sort elements before and after the partition index
 		fordJohnsonMergeInsertionSort(c, start, mid - 1);
@@ -85,31 +86,6 @@ private:
 		std::vector<int> temp = medians;
 		std::sort(temp.begin(), temp.end(), Compare<T>(c));
 		return temp[temp.size() / 2];
-	}
-
-	template <class T>
-	static void merge(T &c, int start, int median, int end) {
-		std::vector<typename T::value_type> temp;
-		temp.reserve(end - start + 1);
-	
-		int left = start, right = median + 1;
-		while (left <= median && right <= end) {
-			if (c[left] < c[right]) {
-				temp.push_back(c[left++]);
-			} else {
-				temp.push_back(c[right++]);
-			}
-		}
-	
-		while (left <= median) {
-			temp.push_back(c[left++]);
-		}
-	
-		while (right <= end) {
-			temp.push_back(c[right++]);
-		}
-	
-		std::copy(temp.begin(), temp.end(), c.begin() + start);
 	}
 };
 
