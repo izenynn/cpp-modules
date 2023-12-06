@@ -19,7 +19,7 @@ RNP::result_type RNP::ResolveExpression(const std::string &line)
 		else if (std::isdigit(*it))
 			PushToken(static_cast<token_type>(*it - '0'));
 		else
-			operate(static_cast<op_type>(*it));
+			Operate(static_cast<op_type>(*it));
 	}
 	if (stack_.size() > 1)
 		throw::std::runtime_error("Operations ended and stack has more than 1 item");
