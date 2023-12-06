@@ -1,11 +1,11 @@
-#ifndef EX01_RNP_HPP_
-#define EX01_RNP_HPP_
+#ifndef EX01_RPN_HPP_
+#define EX01_RPN_HPP_
 
 #include <string> // std::string
 #include <stack> // stack<>
 #include <stdexcept> // std::runtime_error()
 
-class RNP {
+class RPN {
 public:
 	typedef int result_type;
 
@@ -14,10 +14,10 @@ private:
 	typedef result_type token_type;
 	typedef unsigned char op_type;
 
-	RNP();
-	~RNP();
-	RNP(const RNP &rhs);
-	RNP& operator=(const RNP &rhs);
+	RPN();
+	~RPN();
+	RPN(const RPN &rhs);
+	RPN& operator=(const RPN &rhs);
 
 	static std::stack<token_type> stack_;
 
@@ -38,4 +38,4 @@ private:
 	static token_type OpDiv(const token_type &lhs, const token_type &rhs);
 };
 
-#endif // EX01_RNP_HPP_
+#endif // EX01_RPN_HPP_

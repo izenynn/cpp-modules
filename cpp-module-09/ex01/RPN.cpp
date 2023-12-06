@@ -1,17 +1,17 @@
-#include "RNP.hpp"
+#include "RPN.hpp"
 
 #include <cctype> // std::isdigt(), std::isspace()
 
-std::stack<RNP::token_type> RNP::stack_;
+std::stack<RPN::token_type> RPN::stack_;
 
-const struct RNP::operations RNP::operations_[op_size] = {
-	{ '+', &RNP::OpSum },
-	{ '-', &RNP::OpSub },
-	{ '*', &RNP::OpMul },
-	{ '/', &RNP::OpDiv }
+const struct RPN::operations RPN::operations_[op_size] = {
+	{ '+', &RPN::OpSum },
+	{ '-', &RPN::OpSub },
+	{ '*', &RPN::OpMul },
+	{ '/', &RPN::OpDiv }
 };
 
-RNP::result_type RNP::ResolveExpression(const std::string &line)
+RPN::result_type RPN::ResolveExpression(const std::string &line)
 {
 	if (line.empty()) {
 		return 0;
@@ -31,22 +31,22 @@ RNP::result_type RNP::ResolveExpression(const std::string &line)
 	return ret;
 }
 
-void RNP::PopOperandsTokens(token_type &lhs, token_type &rhs)
+void RPN::PopOperandsTokens(token_type &lhs, token_type &rhs)
 {
 	if (stack_.size() < 2)
-		throw std::runtime_error("RNP stack must have at less 2 items to do operations");
+		throw std::runtime_error("RPN stack must have at less 2 items to do operations");
 	rhs = stack_.top();
 	stack_.pop();
 	lhs = stack_.top();
 	stack_.pop();
 }
 
-void RNP::PushToken(token_type token)
+void RPN::PushToken(token_type token)
 {
 	stack_.push(token);
 }
 
-void RNP::Operate(op_type symbol)
+void RPN::Operate(op_type symbol)
 {
 	for (short i = 0; i < op_size; ++i) {
 		if (operations_[i].symbol == symbol) {
@@ -60,19 +60,19 @@ void RNP::Operate(op_type symbol)
 	throw std::runtime_error("Encoutered an undefined operator");
 }
 
-RNP::token_type RNP::OpSum(const token_type &lhs, const token_type &rhs)
+RPN::token_type RPN::OpSum(const token_type &lhs, const token_type &rhs)
 {
 	return lhs + rhs;
 }
-RNP::token_type RNP::OpSub(const token_type &lhs, const token_type &rhs)
+RPN::token_type RPN::OpSub(const token_type &lhs, const token_type &rhs)
 {
 	return lhs - rhs;
 }
-RNP::token_type RNP::OpMul(const token_type &lhs, const token_type &rhs)
+RPN::token_type RPN::OpMul(const token_type &lhs, const token_type &rhs)
 {
 	return lhs * rhs;
 }
-RNP::token_type RNP::OpDiv(const token_type &lhs, const token_type &rhs)
+RPN::token_type RPN::OpDiv(const token_type &lhs, const token_type &rhs)
 {
 	if (rhs == 0)
 		throw std::runtime_error("Tried to divide by 0");

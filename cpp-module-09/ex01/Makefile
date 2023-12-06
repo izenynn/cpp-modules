@@ -16,7 +16,7 @@ CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -Wpedantic -Wshadow -MMD
 
 SRC = \
 	main.cpp		\
-	RNP.cpp			\
+	RPN.cpp			\
 
 OBJ = $(SRC:%.cpp=%.o)
 
